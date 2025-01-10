@@ -1,0 +1,9 @@
+/* Custom styles if needed */
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1:hover {
+    text-decoration: underline;
+  }
+  
