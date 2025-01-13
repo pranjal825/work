@@ -25,12 +25,71 @@
             transform: scale(1.1);
             background-color: rgb(239 68 68);
         }
+      
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+
+        .testimonial-ticker {
+          display: flex;
+          gap: 6rem; /* Adjust spacing between testimonials */
+          animation: scroll-left 30s linear infinite; /* Smooth infinite scrolling */
+        }
+      .gradient-text {
+          background: linear-gradient(90deg, #4299E1 0%, #9F7AEA 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+      }
+
+      .score-badge {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+      }
+
+      .score-badge::before {
+          content: '';
+          width: 20px;
+          height: 20px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310B981'%3E%3Cpath d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'/%3E%3C/svg%3E");
+          margin-right: 4px;
+      }
+
+      .star-rating {
+          color: #FCD34D;
+      }
+
+      @keyframes popup {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .price-popup {
+        animation: popup 2s infinite;
+    }
+
+    .timer-box {
+        transition: all 0.3s ease;
+    }
+
+    .timer-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
         </style>
 </head>
 <body class="bg-blue-50">
 
   <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 w-full bg-transparent z-10 p-4">
+  <nav class="fixed top-0 center-20 w-full bg-transparent z-10 p-4">
     <div class="flex items-center">
       <a href="https://google.com" class="flex items-center space-x-2">
         <img src="logo.png" alt="Logo Image" class="h-10 transition-transform duration-300 hover:scale-110">
@@ -42,7 +101,7 @@
   <!-- Main Content Section -->
   <div class="pt-24 max-w-5xl mx-auto p-4">
     <!-- Outer Box -->
-    <div class="bg-blue-100 p-8 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
+    <div class="bg-blue-200 p-10 rounded-lg shadow-lg hover:shadow-2xl transition duration-300">
       <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0">
         
         <!-- Left Section (Text in White Box) -->
@@ -79,7 +138,7 @@
 
         <!-- Right Section (Image) -->
         <div class="flex-1 flex justify-center">
-          <img src="jatin sir.png" alt="Instructor" class="w-48 md:w-64 h-48 md:h-64 object-cover shadow-lg hover:shadow-2xl transition duration-300">
+          <img src="jatin sir.png" alt="Instructor" class="w-88 md:w-80 h-48 md:h-80 object-cover shadow-lg hover:shadow-2xl transition duration-300">
         </div>
       </div>
     </div>
@@ -378,6 +437,253 @@
           document.getElementById('closeModal').click();
       }
   });
+</script>
+<!-- Testimonial -->
+<body class="bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 py-16">
+      <!-- Header -->
+      <h2 class="text-4xl font-bold text-center gradient-text mb-2">What Our Students Say</h2>
+      <p class="text-center text-gray-600 mb-12">Real experiences from our successful students</p>
+
+      <!-- Testimonials Container -->
+      <div class="relative overflow-hidden">
+          <div class="testimonial-ticker flex gap-6">
+              <!-- Original Testimonials -->
+              <div class="flex gap-6">
+                  <!-- Testimonial 1 -->
+                  <div class="bg-white rounded-xl shadow-lg p-6 w-96 flex-shrink-0">
+                      <div class="flex items-start gap-4 mb-4">
+                          <img src="JahnviBansal.jpg" alt="" class="w-12 h-12 rounded-full object-cover">
+                          <div>
+                              <h3 class="font-semibold text-gray-900">Khushi Chhatwal</h3>
+                              <p class="text-sm text-gray-500">CBSE Student, 2023-24</p>
+                              <div class="score-badge text-emerald-500 text-sm font-medium mt-1">
+                                  Scored 100%
+                              </div>
+                          </div>
+                      </div>
+                      <p class="text-gray-600 mb-4">"Business Studies seemed tough at first, but with the mock tests and revision tips, I scored 100%. Jatin Sir was a fantastic mentor who made everything easy to understand!"</p>
+                      <div class="flex items-center justify-between">
+                          <div class="star-rating flex">
+                              ★★★★★
+                          </div>
+                          <span class="text-sm text-gray-500">Verified Student</span>
+                      </div>
+                  </div>
+
+                  <!-- Testimonial 2 -->
+                  <div class="bg-white rounded-xl shadow-lg p-6 w-96 flex-shrink-0">
+                      <div class="flex items-start gap-4 mb-4">
+                          <img src="pragya.jpg" alt="" class="w-12 h-12 rounded-full object-cover">
+                          <div>
+                              <h3 class="font-semibold text-gray-900">Jahnvi Bansal</h3>
+                              <p class="text-sm text-gray-500">CBSE Student, 2023-24</p>
+                              <div class="score-badge text-emerald-500 text-sm font-medium mt-1">
+                                  Scored 100%
+                              </div>
+                          </div>
+                      </div>
+                      <p class="text-gray-600 mb-4">"I was really struggling with case studies, but Jatin Sir's guidance helped me improve my score to 100%. Business Studies became much simpler after his sessions."</p>
+                      <div class="flex items-center justify-between">
+                          <div class="star-rating flex">
+                              ★★★★★
+                          </div>
+                          <span class="text-sm text-gray-500">Verified Student</span>
+                      </div>
+                  </div>
+
+                  <!-- Testimonial 3 -->
+                  <div class="bg-white rounded-xl shadow-lg p-6 w-96 flex-shrink-0">
+                      <div class="flex items-start gap-4 mb-4">
+                          <img src="Samarthgoel.jpg" alt="" class="w-12 h-12 rounded-full object-cover">
+                          <div>
+                              <h3 class="font-semibold text-gray-900">Somay Mittal</h3>
+                              <p class="text-sm text-gray-500">CBSE Student, 2022-23</p>
+                              <div class="score-badge text-emerald-500 text-sm font-medium mt-1">
+                                  Scored 99%
+                              </div>
+                          </div>
+                      </div>
+                      <p class="text-gray-600 mb-4">"Thanks to the clear and concise explanations, I scored 99%. Jatin Sir's personal mentoring helped me overcome my weak areas in Business Studies!"</p>
+                      <div class="flex items-center justify-between">
+                          <div class="star-rating flex">
+                              ★★★★★
+                          </div>
+                          <span class="text-sm text-gray-500">Verified Student</span>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- Duplicate Testimonials for seamless loop -->
+              <div class="flex gap-6">
+                  <!-- Duplicated testimonials (same as above) -->
+                  <div class="bg-white rounded-xl shadow-lg p-6 w-96 flex-shrink-0">
+                      <div class="flex items-start gap-4 mb-4">
+                          <img src="Sanaaalang.jpg" alt="" class="w-12 h-12 rounded-full object-cover">
+                          <div>
+                              <h3 class="font-semibold text-gray-900">Khushi Chhatwal</h3>
+                              <p class="text-sm text-gray-500">CBSE Student, 2023-24</p>
+                              <div class="score-badge text-emerald-500 text-sm font-medium mt-1">
+                                  Scored 100%
+                              </div>
+                          </div>
+                      </div>
+                      <p class="text-gray-600 mb-4">"Business Studies seemed tough at first, but with the mock tests and revision tips, I scored 100%. Jatin Sir was a fantastic mentor who made everything easy to understand!"</p>
+                      <div class="flex items-center justify-between">
+                          <div class="star-rating flex">
+                              ★★★★★
+                          </div>
+                          <span class="text-sm text-gray-500">Verified Student</span>
+                      </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl shadow-lg p-6 w-96 flex-shrink-0">
+                      <div class="flex items-start gap-4 mb-4">
+                          <img src="ShagunKhanda.jpg" alt="" class="w-12 h-12 rounded-full object-cover">
+                          <div>
+                              <h3 class="font-semibold text-gray-900">Jahnvi Bansal</h3>
+                              <p class="text-sm text-gray-500">CBSE Student, 2023-24</p>
+                              <div class="score-badge text-emerald-500 text-sm font-medium mt-1">
+                                  Scored 100%
+                              </div>
+                          </div>
+                      </div>
+                      <p class="text-gray-600 mb-4">"I was really struggling with case studies, but Jatin Sir's guidance helped me improve my score to 100%. Business Studies became much simpler after his sessions."</p>
+                      <div class="flex items-center justify-between">
+                          <div class="star-rating flex">
+                              ★★★★★
+                          </div>
+                          <span class="text-sm text-gray-500">Verified Student</span>
+                      </div>
+                  </div>
+
+                  <div class="bg-white rounded-xl shadow-lg p-6 w-96 flex-shrink-0">
+                      <div class="flex items-start gap-4 mb-4">
+                          <img src="SomayMittal.jpg" alt="" class="w-12 h-12 rounded-full object-cover">
+                          <div>
+                              <h3 class="font-semibold text-gray-900">Somay Mittal</h3>
+                              <p class="text-sm text-gray-500">CBSE Student, 2022-23</p>
+                              <div class="score-badge text-emerald-500 text-sm font-medium mt-1">
+                                  Scored 99%
+                              </div>
+                          </div>
+                      </div>
+                      <p class="text-gray-600 mb-4">"Thanks to the clear and concise explanations, I scored 99%. Jatin Sir's personal mentoring helped me overcome my weak areas in Business Studies!"</p>
+                      <div class="flex items-center justify-between">
+                          <div class="star-rating flex">
+                              ★★★★★
+                          </div>
+                          <span class="text-sm text-gray-500">Verified Student</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script>
+    function checkTestimonialPosition() {
+        const ticker = document.querySelector('.testimonial-ticker');
+        if (ticker.getBoundingClientRect().right <= window.innerWidth) {
+            ticker.style.transform = 'translateX(-50%)';
+            ticker.style.transition = 'none';
+            setTimeout(() => {
+                ticker.style.transition = '';
+            }, 10);
+        }
+    }
+
+    setInterval(checkTestimonialPosition, 1000);
+    checkTestimonialPosition();
+</script>
+<!-- Sec 5 -->
+<div class="max-w-4xl mx-auto p-8 bg-white rounded-2xl shadow-lg mt-10">
+  <div class="text-center space-y-6">
+      <!-- Header Section -->
+      <div class="flex items-center justify-center gap-4 flex-wrap">
+          <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Register Now | Limited Seats Available</h1>
+          <div class="price-popup bg-emerald-500 text-white px-4 py-2 rounded-full font-semibold">
+              ₹ 99/- Only
+          </div>
+      </div>
+
+      <!-- Register Next Section -->
+      <div class="space-y-2">
+          <p class="text-xl text-gray-700 flex items-center justify-center gap-2">
+              Register In Next 
+              <span class="text-2xl">👇</span>
+          </p>
+          <p class="flex items-center justify-center gap-2 text-lg">
+              <span class="text-purple-600">🎁</span>
+              Unlock Bonuses Worth 
+              <span class="text-purple-600 font-semibold">₹5,000</span>
+          </p>
+      </div>
+
+      <!-- Course Content -->
+      <p class="text-lg text-gray-700 font-medium">
+          (12 Mind Maps + 12 Chapter Notes + 12 Case Studies)
+      </p>
+
+      <!-- Timer Section -->
+      <div class="flex justify-center gap-4 my-8">
+          <div class="timer-box bg-white border-2 border-blue-500 rounded-lg p-4 w-24 text-center">
+              <div id="days" class="text-2xl font-bold text-blue-500">00</div>
+              <div class="text-sm text-gray-600">Days</div>
+          </div>
+          <div class="timer-box bg-white border-2 border-blue-500 rounded-lg p-4 w-24 text-center">
+              <div id="hours" class="text-2xl font-bold text-blue-500">00</div>
+              <div class="text-sm text-gray-600">Hours</div>
+          </div>
+          <div class="timer-box bg-white border-2 border-blue-500 rounded-lg p-4 w-24 text-center">
+              <div id="minutes" class="text-2xl font-bold text-blue-500">00</div>
+              <div class="text-sm text-gray-600">Minutes</div>
+          </div>
+          <div class="timer-box bg-white border-2 border-blue-500 rounded-lg p-4 w-24 text-center">
+              <div id="seconds" class="text-2xl font-bold text-blue-500">00</div>
+              <div class="text-sm text-gray-600">Seconds</div>
+          </div>
+      </div>
+
+      <!-- Register Button -->
+      <button class="bg-blue-600 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2 mx-auto">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+          <span>Register Now ₹99</span>
+      </button>
+      <p class="text-sm text-gray-500">Secured by Razorpay</p>
+  </div>
+</div>
+<script>
+  // Set the countdown date (24 hours from now)
+  const countDownDate = new Date().getTime() + (24 * 60 * 60 * 1000);
+
+  // Update the countdown every second
+  const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      // Calculate days, hours, minutes and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the results
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+      // If the countdown is finished, clear the interval
+      if (distance < 0) {
+          clearInterval(countdown);
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+      }
+  }, 1000);
 </script>
   </body>
 </html>
