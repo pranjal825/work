@@ -109,7 +109,31 @@
     .faq-item.active .chevron {
       transform: rotate(180deg);
     }
-    
+
+    @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pop-animation {
+            animation: pop 1s ease-in-out infinite;
+        }
+
+        .countdown-text {
+            color: #FF0000;
+            font-weight: 600;
+        }
+
+        .razorpay-button {
+            background-color: #2B3990;
+            transition: all 0.3s ease;
+        }
+
+        .razorpay-button:hover {
+            background-color: #1e2866;
+        }
+
         </style>
 </head>
 <body class="bg-blue-50">
@@ -465,7 +489,6 @@
   });
 </script>
 <!-- Testimonial -->
-<body class="bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 py-16">
       <!-- Header -->
       <h2 class="text-4xl font-bold text-center gradient-text mb-2">What Our Students Say</h2>
@@ -791,5 +814,60 @@ function toggleFAQ(button) {
   faqItem.classList.toggle("active");
 }
 </script>
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+          <!-- Price Section -->
+          <div class="flex items-center gap-4">
+              <div class="flex items-baseline gap-2">
+                  <span class="text-2xl font-bold text-green-500">₹99</span>
+                  <span class="text-gray-500 line-through">₹999</span>
+              </div>
+              <div class="countdown-text" id="countdown"></div>
+          </div>
+
+          <!-- Register Button -->
+          <button class="razorpay-button text-white px-6 py-2 rounded-lg flex items-center gap-2">
+             <a href="https://razorpay.com/" target="_blank"><img src="razorpay1.png" alt="Razorpay Logo" class="h-5"></a>
+              <span>Register Now ₹99</span>
+          </button>
+      </div>
+  </div>
+</div>
+<script>
+  function startCountdown() {
+      // Set initial time (6 minutes and 24 seconds)
+      let totalSeconds = 6 * 60 + 24;
+      
+      const countdownElement = document.getElementById('countdown');
+      
+      function updateCountdown() {
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+          
+          // Update the countdown display
+          countdownElement.textContent = `Offer Ends in ${minutes}:${seconds.toString().padStart(2, '0')} Mins`;
+          
+          // Add/remove pop animation based on remaining time
+          if (totalSeconds <= 60) { // Last minute
+              countdownElement.classList.add('pop-animation');
+          }
+          
+          if (totalSeconds > 0) {
+              totalSeconds--;
+              setTimeout(updateCountdown, 1000);
+          } else {
+              countdownElement.textContent = 'Offer Ended';
+              countdownElement.classList.remove('pop-animation');
+          }
+      }
+      
+      updateCountdown();
+  }
+
+  // Start the countdown when the page loads
+  document.addEventListener('DOMContentLoaded', startCountdown);
+</script>
+
   </body>
 </html>
