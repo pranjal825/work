@@ -7,4 +7,27 @@ body {
     text-decoration: underline;
   }
 
- 
+  .gradient-text {
+    background: linear-gradient(90deg, #4299E1 0%, #9F7AEA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .highlight-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .highlight-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+  }
+  
+  img:hover {
+    opacity: 0.8;
+  }
+  
