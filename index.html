@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interactive Workshop Page</title>
   <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Lucide Icons -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <style>
+          .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .play-button {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover .play-button {
+            transform: scale(1.1);
+            background-color: rgb(239 68 68);
+        }
+        </style>
 </head>
 <body class="bg-blue-50">
 
@@ -63,46 +84,300 @@
       </div>
     </div>
   </div>
-
-  <!-- Main Content -->
-  <main class="max-w-6xl mx-auto p-6 space-y-10">
-
-   <!-- Mentor Section -->
-   <section class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center">
-    <!-- Image on Left -->
-    <div class="flex flex-col items-center">
-      <img src="try1.jpg" alt="Mentor" class="rounded-lg shadow-md w-48 md:w-64 mb-6">
-      <!-- Text Below Image -->
-      <div class="text-center">
-        <h1 class="text-2xl md:text-3xl font-bold">I will be your Mentor for 2 hours</h1>
-        <h2 class="text-xl font-semibold mt-2">Jatin Rajpal Sir</h2>
-        <p class="text-blue-600">Educator of Economics & Business Studies</p>
-        <p class="mt-2 text-lg">4.97 ⭐ (10,000+ ratings)</p>
-        <div class="mt-4 bg-blue-100 p-4 rounded-lg">
-          <p>
-            Mentored over <strong>5000+ students</strong> in the last 10 years.<br>
-            More than <strong>3000+ students</strong> scored 90%+ in CBSE Board Exams.
-          </p>
-        </div>
-        <section class="bg-white p-6 rounded-lg shadow-lg">
-          <h2 class="text-xl font-bold mb-4">What Happens When You Join?</h2>
-          <ul class="space-y-4">
-            <li class="p-4 bg-blue-100 rounded-lg shadow-md">
-              <strong>Master Case Studies:</strong> Learn to tackle every chapter’s tricky case studies with expert tips. 🧠
-            </li>
-            <li class="p-4 bg-blue-100 rounded-lg shadow-md">
-              <strong>Boost Scoring Power:</strong> Understand key concepts to ace the Business Studies exam effortlessly. 💯
-            </li>
-            <li class="p-4 bg-blue-100 rounded-lg shadow-md">
-              <strong>Quick Doubt Clearing:</strong> Resolve all your queries instantly during live sessions. 🚀
-            </li>
-            <li class="p-4 bg-blue-100 rounded-lg shadow-md">
-              <strong>Smart Exam Strategy:</strong> Get hacks to structure answers and impress the examiner! ✨
-            </li>
-          </ul>
+  <!--Sec 2-->
+      <div class="container mx-auto px-4 py-8 max-w-7xl">
+          <h1 class="text-3xl md:text-4xl font-bold text-blue-500 mb-8">
+              I will be your Mentor for 2 hours
+          </h1>
+          
+          <div class="grid md:grid-cols-2 gap-8 mb-12">
+              <!-- Left Column -->
+              <div class="space-y-6">
+                  <div class="relative">
+                      <div class="rounded-2xl overflow-hidden shadow-lg">
+                          <img
+                              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sec2-8tRPVZXlvNybAGTxbRDbMfJK1UmVt4.png"
+                              alt="Mentor profile"
+                              class="w-full object-cover"
+                          />
+                      </div>
+                      <div class="absolute -top-2 -right-2 bg-white p-2 rounded-full shadow-md">
+                          <i data-lucide="award" class="w-6 h-6 text-blue-500"></i>
+                      </div>
+                  </div>
+  
+                  <div class="space-y-2">
+                      <h2 class="text-2xl font-bold text-gray-900">Jatin Rajpal Sir</h2>
+                      <p class="text-blue-500">Educator of Economics & Business Studies</p>
+                      
+                      <div class="flex items-center gap-2">
+                          <span class="text-2xl font-bold text-gray-900">4.97</span>
+                          <div class="flex text-yellow-400" id="rating-stars"></div>
+                          <span class="text-gray-600">(>10,000 ratings)</span>
+                      </div>
+                  </div>
+  
+                  <div class="bg-blue-50 p-6 rounded-xl space-y-3">
+                      <p class="text-gray-800">
+                          Mentored over <span class="font-bold text-blue-500">5000+</span> students in last 10 Years
+                      </p>
+                      <p class="text-gray-800">
+                          More than <span class="font-bold text-blue-500">3000 + students Scored 90+</span> Marks in CBSE board Exam
+                      </p>
+                  </div>
+              </div>
+  
+              <!-- Right Column -->
+              <div class="space-y-6">
+                  <h3 class="text-2xl font-bold text-gray-900">What Happens When You Join?</h3>
+                  
+                  <div class="space-y-4" id="benefits-container">
+                      <!-- Benefits will be inserted here by JavaScript -->
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-  </section>
+      <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
 
-</body>
+        // Create rating stars
+        const ratingContainer = document.getElementById('rating-stars');
+        for (let i = 0; i < 5; i++) {
+            const star = document.createElement('i');
+            star.setAttribute('data-lucide', 'star');
+            star.classList.add('w-5', 'h-5', 'fill-current');
+            ratingContainer.appendChild(star);
+        }
+
+        // Benefits data
+        const benefits = [
+            {
+                icon: 'clock',
+                title: "Master Case Studies:",
+                description: "Learn to tackle every chapter's tricky case studies with expert tips. 📘"
+            },
+            {
+                icon: 'target',
+                title: "Boost Scoring Power:",
+                description: "Understand key concepts to ace the Business Studies exam effortlessly. 💯"
+            },
+            {
+                icon: 'trending-up',
+                title: "Quick Doubt Clearing:",
+                description: "Resolve all your queries instantly during the live sessions. 🎯"
+            },
+            {
+                icon: 'award',
+                title: "Smart Exam Strategy:",
+                description: "Get hacks to structure answers and impress the examiner! ✨"
+            }
+        ];
+
+        // Create benefit cards
+        const benefitsContainer = document.getElementById('benefits-container');
+        benefits.forEach(benefit => {
+            const benefitCard = document.createElement('div');
+            benefitCard.className = 'flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100';
+            
+            benefitCard.innerHTML = `
+                <div class="bg-blue-50 p-2 rounded-lg">
+                    <i data-lucide="${benefit.icon}" class="w-6 h-6 text-blue-500"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-900">${benefit.title}</h4>
+                    <p class="text-gray-600">${benefit.description}</p>
+                </div>
+            `;
+            
+            benefitsContainer.appendChild(benefitCard);
+        });
+
+        // Reinitialize icons after adding new ones
+        lucide.createIcons();
+    </script>
+
+<!-- SEC-3 -->
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12">
+          <h2 class="text-4xl md:text-5xl font-bold text-emerald-500 mb-4">
+              Results That Speak
+          </h2>
+          <p class="text-gray-600 text-lg">
+              Hear directly from our toppers about their journey to success
+          </p>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <!-- Result Card 1 -->
+          <div class="result-card rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900 to-blue-800 p-6 relative">
+              <div class="text-center">
+                  <h3 class="cursive text-4xl text-yellow-400 mb-4">Congratulation</h3>
+                  <p class="text-white bg-green-800 inline-block px-4 py-2 rounded-lg mb-4">
+                      We are proud of you for your Stellar Achievements!
+                  </p>
+                  <div class="bg-yellow-400 text-blue-900 font-bold px-4 py-1 rounded-full inline-block mb-4">
+                      Mridul Jindal
+                  </div>
+              </div>
+              
+              <div class="relative">
+                  <img 
+                      src="jahnvi Bansal.jpg" 
+                      alt="Student Achievement" 
+                      class="w-full h-64 object-cover rounded-lg"/>
+              </div>
+          </div>
+
+          <!-- Result Card 2 -->
+          <div class="result-card rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900 to-blue-800 p-6 relative">
+              <div class="text-center">
+                  <h3 class="cursive text-4xl text-yellow-400 mb-4">Congratulation</h3>
+                  <p class="text-white bg-green-800 inline-block px-4 py-2 rounded-lg mb-4">
+                      We are proud of you for your Stellar Achievements!
+                  </p>
+                  <div class="bg-yellow-400 text-blue-900 font-bold px-4 py-1 rounded-full inline-block mb-4">
+                      Jahnvi Bansal
+                  </div>
+              </div>
+              
+              <div class="relative">
+                  <img 
+                      src="mridul jindal.jpg" 
+                      alt="Student Achievement" 
+                      class="w-full h-64 object-cover rounded-lg" />
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<section class="py-16 px-4">
+  <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial Card 1 -->
+          <div class="testimonial-card bg-white rounded-xl overflow-hidden shadow-lg">
+              <div class="relative">
+                  <div class="aspect-video bg-gray-200 relative cursor-pointer video-thumbnail">
+                      <i class="hidden">https://www.youtube.com/watch?v=AApPVaa1Eho</i>
+                      <div class="absolute inset-0 flex items-center justify-center">
+                          <div class="play-button w-16 h-16 bg-red-400 rounded-full flex items-center justify-center">
+                              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z"/>
+                              </svg>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-6">
+                  <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-xl font-semibold text-gray-900">Khushi Chhatwal</h3>
+                      <span class="text-cyan-500 font-bold">100%</span>
+                  </div>
+                  <p class="text-gray-600 italic">"The structured approach to case studies helped me score full marks!"</p>
+              </div>
+          </div>
+
+          <!-- Testimonial Card 2 -->
+          <div class="testimonial-card bg-white rounded-xl overflow-hidden shadow-lg">
+              <div class="relative">
+                  <div class="aspect-video bg-gray-200 relative cursor-pointer video-thumbnail">
+                      <i class="hidden">https://www.youtube.com/watch?v=dQw4w9WgXcQ</i>
+                      <div class="absolute inset-0 flex items-center justify-center">
+                          <div class="play-button w-16 h-16 bg-red-400 rounded-full flex items-center justify-center">
+                              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z"/>
+                              </svg>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-6">
+                  <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-xl font-semibold text-gray-900">Chahat Gupta</h3>
+                      <span class="text-cyan-500 font-bold">100%</span>
+                  </div>
+                  <p class="text-gray-600 italic">"Clear concepts and regular practice tests were the key to my success"</p>
+              </div>
+          </div>
+
+          <!-- Testimonial Card 3 -->
+          <div class="testimonial-card bg-white rounded-xl overflow-hidden shadow-lg">
+              <div class="relative">
+                  <div class="aspect-video bg-gray-200 relative cursor-pointer video-thumbnail">
+                      <i class="hidden"><iframe width="853" height="480" src="https://www.youtube.com/embed/AApPVaa1Eho" title="Khushi Chhatwal | Scored 100 in B.St 2023-24 JR Batch" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></i>
+                      <div class="absolute inset-0 flex items-center justify-center">
+                          <div class="play-button w-16 h-16 bg-red-400 rounded-full flex items-center justify-center">
+                              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z"/>
+                              </svg>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-6">
+                  <div class="flex items-center justify-between mb-2">
+                      <h3 class="text-xl font-semibold text-gray-900">Parv Arora</h3>
+                      <span class="text-cyan-500 font-bold">97%</span>
+                  </div>
+                  <p class="text-gray-600 italic">"The tips and tricks for answer writing improved my presentation"</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Modal for YouTube Video -->
+<div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+  <div class="relative w-full max-w-4xl mx-4">
+      <div class="aspect-video">
+          <iframe id="videoIframe" class="w-full h-full" frameborder="0" allowfullscreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+      </div>
+      <button id="closeModal" class="absolute -top-10 right-0 text-white text-xl p-2">
+          ✕ Close
+      </button>
+  </div>
+</div>
+<script>
+  // Handle video thumbnails click
+  document.querySelectorAll('.video-thumbnail').forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+          const videoId = thumbnail.dataset.videoId;
+          const modal = document.getElementById('videoModal');
+          const iframe = document.getElementById('videoIframe');
+          
+          // Set video source
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          
+          // Show modal
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+      });
+  });
+
+  // Handle modal close
+  document.getElementById('closeModal').addEventListener('click', () => {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      
+      // Clear video source
+      iframe.src = '';
+      
+      // Hide modal
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+  });
+
+  // Close modal when clicking outside
+  document.getElementById('videoModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('videoModal')) {
+          document.getElementById('closeModal').click();
+      }
+  });
+</script>
+  </body>
 </html>
